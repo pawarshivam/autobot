@@ -1,0 +1,6 @@
+2021-06-01 16:32:07,492 - instabot version: 0.117.0 (bot) - INFO - Instabot version: 0.117.0 Started
+2021-06-01 16:32:07,493 - instabot version: 0.117.0 (bot) - DEBUG - Bot imported from C:\Users\Shivam\AppData\Local\Programs\Python\Python39\lib\site-packages\instabot\bot\bot.py
+2021-06-01 16:32:07,494 - instabot version: 0.117.0 (api_login) - DEBUG - Loading cookies
+2021-06-01 16:32:07,495 - instabot version: 0.117.0 (bot) - INFO - Bot stopped. Worked: 0:00:00.004361
+2021-06-01 16:32:07,497 - instabot version: 0.117.0 (bot_checkpoint) - DEBUG - Saving Checkpoint file to: D:\Ultimate Thug Life\autobot/config/ultthuglife.checkpoint
+2021-06-01 16:32:07,498 - instabot version: 0.117.0 (bot) - INFO - Total requests: 0

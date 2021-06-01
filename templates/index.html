@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename = 'css/autobot.css') }}" rel="stylesheet">
+    <title>Autobot</title>
+    <style>
+        .card-main {
+            width: 360px;
+        }
+
+        .breathe-sm {
+            margin-bottom: 12px;
+        }
+
+        .breathe-lg {
+            margin-bottom: 18px;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Autobot</a>
+        </div>
+    </nav>
+    <div class="container d-flex justify-content-center mb-5">
+        <div class="card shadow-sm card-main">
+            <div class="card-body">
+                <form method="POST" action="/post">
+                    <div class="breathe-sm">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="ultthuglife"
+                            value="ultthuglife">
+                    </div>
+                    <div class="breathe-sm">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder=""
+                            value="">
+                    </div>
+                    <div class="breathe-sm">
+                        <label for="caption" class="form-label">Caption</label>
+                        <textarea class="form-control" id="caption" name="caption" rows="2"></textarea>
+                    </div>
+                    <div class="breathe-lg">
+                        <label for="url" class="form-label">URL</label>
+                        <input type="url" class="form-control" id="url" name="url"
+                            placeholder="https://instagram.com/p/" value="">
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="breathe-sm">
+                        <button type="submit" class="btn btn-primary w-100" name="post" value="post">Post</button>
+                    </div>
+                    <div class="breathe-sm">
+                        <button type="submit" class="btn btn-outline-secondary w-100" name="download" value="download">Download</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

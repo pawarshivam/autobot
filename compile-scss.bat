@@ -1,0 +1,1 @@
+sass static/scss/autobot.scss static/css/autobot.css --no-source-map
