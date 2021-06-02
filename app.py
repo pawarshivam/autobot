@@ -3,9 +3,12 @@ from flask import jsonify
 from flask import request
 from flask import render_template
 from flask import send_file
+from flask import url_for
 import instaloader
 import configparser
 import os
+
+from werkzeug.utils import redirect
 
 parser = configparser.ConfigParser()
 parser.read('autobot.config')
@@ -17,8 +20,6 @@ POST_PREFIX = parser.get('post', 'prefix')
 
 EXTENSION_IMAGE = parser.get('extension', 'image')
 EXTENSION_VIDEO = parser.get('extension', 'video')
-MIMETYPE_IMAGE = parser.get('mimetype', 'image')
-MIMETYPE_VIDEO = parser.get('mimetype', 'video')
 
 app = Flask(__name__)
 
@@ -27,6 +28,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+
+@app.route('/post/<target>/<filename>', methods=['GET'])
+def get(target, filename):
+    return send_file(os.path.join(target, filename))
 
 @app.route('/post', methods=['POST'])
 def post():
@@ -42,10 +47,10 @@ def post():
     download = request.form.get('download')
 
     try:
-        filename, mimetype = download_post(username, password, id, target)
+        filename = download_post(username, password, id, target)
 
         if not download == None:
-            return send_file(os.path.join(target, filename), mimetype=mimetype)
+            return redirect(url_for('.get', target=target, filename=filename))
 
         if not post == None:
             return jsonify({
@@ -79,17 +84,14 @@ def download_post(username, password, id, target):
     L.download_post(post, target=target)
 
     extension = ''
-    mimetype = ''
     if(post.is_video):
         extension = EXTENSION_VIDEO
-        mimetype = MIMETYPE_VIDEO
     else:
         extension = EXTENSION_IMAGE
-        mimetype = MIMETYPE_IMAGE
 
     for file in os.listdir(target):
         if file.endswith(extension):
-            return file, mimetype
+            return file
 
 
 app.run(
